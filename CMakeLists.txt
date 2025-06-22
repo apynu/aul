@@ -1,33 +1,33 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(templ VERSION 1.0 LANGUAGES CXX)
+project(aul VERSION 1.0 LANGUAGES CXX)
 
 include_directories("${CMAKE_CURRENT_LIST_DIR}/include")
 
-set(SOURCES 
-	"src/templ.cpp"
+set(SOURCES
+	src/vector.cpp
 )
 
 # create shared lib
-add_library(templ_shared SHARED ${SOURCES})
-set_target_properties(templ_shared PROPERTIES OUTPUT_NAME "templ")
+add_library(aul_shared SHARED ${SOURCES})
+set_target_properties(aul_shared PROPERTIES OUTPUT_NAME "aul")
 
 # create static lib
-add_library(templ_static STATIC ${SOURCES})
-set_target_properties(templ_static PROPERTIES OUTPUT_NAME "templ")
+add_library(aul_static STATIC ${SOURCES})
+set_target_properties(aul_static PROPERTIES OUTPUT_NAME "aul")
 
 install(DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/include" DESTINATION "${CMAKE_CURRENT_LIST_DIR}/lib")
-install(TARGETS templ_shared templ_static
+install(TARGETS aul_shared aul_static
 	LIBRARY DESTINATION "${CMAKE_CURRENT_LIST_DIR}/lib"
         ARCHIVE DESTINATION "${CMAKE_CURRENT_LIST_DIR}/lib")
 
-add_executable(templ_test
-		"test/templ_test.cpp"
+add_executable(aul_test
+	test/aul_test.cpp
 )
 
-target_link_libraries(templ_test PRIVATE templ_static)
-target_include_directories(templ_test PRIVATE ../lib/include)
+target_link_libraries(aul_test PRIVATE aul_static)
+target_include_directories(aul_test PRIVATE ../lib/include)
 
 # add ctest support
 enable_testing()
-add_test(NAME templ_test COMMAND templ_test)
+add_test(NAME aul_test COMMAND aul_test)

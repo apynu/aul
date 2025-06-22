@@ -18,9 +18,12 @@ release: clean
 	@echo "Building in Release mode..."
 	mkdir -p $(RELEASE_DIR) && cd $(RELEASE_DIR) && cmake -DCMAKE_BUILD_TYPE=Release ..
 
-test: 	release
-	@echo "running tests..."
-	cd $(RELEASE_DIR) && make templ_test && ctest
+test: all
+	@echo "running tests in debug..."
+	cd $(DEBUG_DIR) && make aul_test && ctest
+
+	@echo "running tests in release..."
+	cd $(RELEASE_DIR) && make aul_test && ctest
 
 install: release
 	@echo "installing..."
