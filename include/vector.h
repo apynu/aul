@@ -10,11 +10,11 @@ public:
 
   // erase an element at some index via an int
   // WARN: this erase method is very unperformant
-  void erase(int index);
+  void erase_index(int index);
 
   // erase all elements in the vector
   // WARN: this erase method is very unperformant
-  //void erase(T element);
+  void erase_element(T element);
 
 };
 } // namespace aul
