@@ -9,7 +9,7 @@ public:
   using std::vector<T>::operator=;
 
   // erase an element at some index
-  void erase(int index);
+  void erase_index(int index);
 
   // erase all elements in the vector
   // WARN: this erase method is very unperformant

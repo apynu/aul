@@ -2,7 +2,7 @@
 
 using namespace aul;
 
-template <typename T> void vector<T>::erase(int index) {
+template <typename T> void vector<T>::erase_index(int index) {
   this->erase(this->begin() + index);
 }
 
