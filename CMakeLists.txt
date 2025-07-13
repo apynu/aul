@@ -1,15 +1,18 @@
 cmake_minimum_required(VERSION 3.10)
 
 project(aul VERSION 1.0 LANGUAGES CXX)
+set (CMAKE_CXX_STANDARD 23)
 
 include_directories("${CMAKE_CURRENT_LIST_DIR}/include")
 
 set(SOURCES
 	src/vector.cpp
+		include/fast_circ_buf.h
 )
 
 # create shared lib
-add_library(aul_shared SHARED ${SOURCES})
+add_library(aul_shared SHARED ${SOURCES}
+		include/fast_circ_buf.h)
 set_target_properties(aul_shared PROPERTIES OUTPUT_NAME "aul")
 
 # create static lib
